@@ -1,0 +1,13 @@
+/* Stylin using css for sign up */
+
+.bg-signup {
+    background-image: url('../images/bg-signin.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.signup-card {
+    width: 25rem;
+    height: 25rem;
+}
