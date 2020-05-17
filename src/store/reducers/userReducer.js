@@ -50,7 +50,8 @@ export default function userReducer(userState = initialState, action) {
                             email: action.payload.email,
                             phone: action.payload.phone,
                             city: action.payload.city,
-                            province: action.payload.province
+                            province: action.payload.province,
+                            status: localStorage.getItem('status')
 
                     }
                     case "SUCCESS_SIGNUP":

@@ -25,6 +25,9 @@ class Profile extends Component {
                 />
                 <ul className="list-group list-group-flush">
                   <li className="list-group-item">Name: {this.props.name}</li>
+                  <li className="list-group-item">
+                    Status: {this.props.status}
+                  </li>
                   <li className="list-group-item">Email: {this.props.email}</li>
                   <li className="list-group-item">Phone: {this.props.phone}</li>
                   <li className="list-group-item">City: {this.props.city}</li>
@@ -50,6 +53,7 @@ const mapStateToProps = (state) => {
     phone: state.user.phone,
     city: state.user.city,
     province: state.user.province,
+    status: state.user.status,
   };
 };
 

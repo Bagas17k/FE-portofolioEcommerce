@@ -3,6 +3,7 @@ import "../style/header.css";
 import { Link } from "react-router-dom";
 
 const Header = (props, postSignout) => {
+  const status = localStorage.getItem("status");
   const login = localStorage.getItem("is_login");
   postSignout = () => {
     props.doSignOut();
@@ -47,6 +48,36 @@ const Header = (props, postSignout) => {
               </form>
             </li>
           </ul>
+          <div>
+            <div class="dropdown">
+              <a
+                className="btn btn-secondary dropdown-toggle"
+                href="#"
+                role="button"
+                id="dropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                Categories
+              </a>
+
+              <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a className="dropdown-item" href="#">
+                  Hijab Segi Empat
+                </a>
+                <a className="dropdown-item" href="#">
+                  Pashmina
+                </a>
+                <a className="dropdown-item" href="#">
+                  Ciput
+                </a>
+                <a className="dropdown-item" href="#">
+                  Hijab Instant
+                </a>
+              </div>
+            </div>
+          </div>
           {login ? (
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">

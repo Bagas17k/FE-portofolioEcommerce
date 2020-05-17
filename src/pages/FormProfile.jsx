@@ -12,6 +12,10 @@ import FormProfil from "../component/FormProfil";
 class FormProfile extends Component {
   postProfile = async () => {
     await this.props.doPostProfile();
+    const is_login = this.props.login;
+    if (!is_login) {
+      this.props.history.push("/profile");
+    }
   };
   render() {
     return (
@@ -49,6 +53,7 @@ const mapStateToProps = (state) => {
     city_type: state.user.city_type,
     street: state.user.street,
     phone: state.user.state,
+    login: state.user.is_login,
   };
 };
 
