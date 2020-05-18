@@ -10,6 +10,7 @@ import FormProfile from "../pages/FormProfile";
 import Profile from "../pages/Profile";
 import Product from "../pages/Product";
 import PostProduct from "../pages/PostProduct";
+import ProductDetail from "../pages/ProductDetail";
 
 const MainRoute = () => {
   return (
@@ -19,11 +20,13 @@ const MainRoute = () => {
           <Route exact path="/" component={Home} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/member/cart" component={Cart} />
           <Route exact path="/profile/form" component={FormProfile} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/product" component={Product} />
-          <Route exact path="/member/cart" component={Cart} />
           <Route exact path="/product/form" component={PostProduct} />
+          <Route exact path="/product/:id" component={ProductDetail} />
+          <Route exact path="/product/category/:id" component={Product} />
         </Switch>
       </BrowserRouter>
     </Provider>

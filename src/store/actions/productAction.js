@@ -98,3 +98,83 @@ export const GetCart = (props) => {
 
     }
 }
+
+export const getProductId = (id) => {
+    return async (dispatch) => {
+
+        try {
+            const response = await axios.get(url + '/product/' + id, {
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8",
+                    Accept: "application/json; charset=utf-8",
+                }
+            })
+            dispatch({
+                type: 'GET_PRODUCT_ID',
+                payload: response.data
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+}
+
+export const PostCart = (id) => {
+    return async (dispatch) => {
+        const bodyRequest = {
+            product_id: id,
+            qty: 1,
+            shipping_method_id: 1,
+            payment_method_id: 1
+        }
+        const token = localStorage.getItem('token')
+        const myJSON = JSON.stringify(bodyRequest)
+        try {
+            await axios.post(url + '/cart', myJSON, {
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8",
+                    Accept: "application/json; charset=utf-8",
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export const deleteCart = (id) => {
+    return async (dispatch) => {
+        const token = localStorage.getItem('token')
+        try {
+            await axios.delete(url + '/cart/' + id, {
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8",
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            dispatch({
+                type: 'SUCCESS_DELETE_CART'
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export const GetProductByCategory = (id) => {
+    return async (dispatch) => {
+        try {
+
+            const response = id === 'all' ? await axios.get(url + '/product') : await axios.get(url + '/product/category/' + id)
+            // const response = await axios.get(url + '/product/category/' + id)
+            dispatch({
+                type: 'GET_PRODUCT',
+                payload: response.data
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}

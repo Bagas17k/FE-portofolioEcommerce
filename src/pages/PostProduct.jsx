@@ -7,6 +7,7 @@ import {
   changeInputProduct,
   PostInputProduct,
   changeProductType,
+  GetProductByCategory,
 } from "../store/actions/productAction";
 
 class PostProduct extends Component {
@@ -21,7 +22,12 @@ class PostProduct extends Component {
   render() {
     return (
       <React.Fragment>
-        <Header doSignOut={this.doSignOut} {...this.props} />
+        <Header
+          doSignOut={this.doSignOut}
+          {...this.props}
+          category={this.props.category}
+          GetProductByCategory={this.props.GetProductByCategory}
+        />
         <div className="container">
           <div className="row">
             <div className="col-md-5 my-3">
@@ -31,7 +37,7 @@ class PostProduct extends Component {
               />
             </div>
             <div>
-              <div className="container my-5">
+              <div className="container ml-4 my-5">
                 <div className="my-3">
                   <h1>Form Product</h1>
                 </div>
@@ -155,6 +161,7 @@ class PostProduct extends Component {
 const mapStateToProps = (state) => {
   return {
     login: state.user.is_login,
+    category: state.product.listCategory,
   };
 };
 
@@ -163,5 +170,6 @@ const mapDispatchToProps = {
   changeInputProduct: (e) => changeInputProduct(e),
   changeInput: (e) => changeProductType(e),
   PostInputProduct,
+  GetProductByCategory,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(PostProduct);

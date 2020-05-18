@@ -8,6 +8,7 @@ import {
   changeInputUser,
   doSignOut,
 } from "../store/actions/userAction";
+import { GetProductByCategory } from "../store/actions/productAction";
 import Footer from "../component/Footer";
 
 class Signin extends Component {
@@ -21,7 +22,12 @@ class Signin extends Component {
   render() {
     return (
       <React.Fragment>
-        <Header doSignOut={this.doSignOut} {...this.props} />
+        <Header
+          doSignOut={this.doSignOut}
+          {...this.props}
+          category={this.props.category}
+          GetProductByCategory={this.props.GetProductByCategory}
+        />
         <div className="bg-signin py-5">
           <div className="d-flex justify-content-center mt-5">
             <div className="card signin-card">
@@ -65,7 +71,9 @@ class Signin extends Component {
 
                   <p>
                     Tidak ada akun?
-                    <Link href="">Daftar</Link>
+                    <Link to="/signup" href="">
+                      Daftar
+                    </Link>
                   </p>
                 </form>
               </div>
@@ -82,6 +90,7 @@ const mapStateToProps = (state) => {
     namaPengguna: state.user.namaPengguna,
     kataKunci: state.user.kataKunci,
     login: state.user.is_login,
+    category: state.product.listCategory,
   };
 };
 
@@ -89,5 +98,6 @@ const mapDispatchToProps = {
   changeInput: (e) => changeInputUser(e),
   doLogin: doLogin,
   doSignOut,
+  GetProductByCategory,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Signin);

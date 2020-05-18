@@ -1,7 +1,8 @@
 const initialState = {
     listCategory: [],
     listProduct: [],
-    listCart: []
+    listCart: [],
+    productId: []
 };
 
 
@@ -31,12 +32,21 @@ export default function productReducer(state = initialState, action) {
                         return {
                             ...state
                         }
-                        case "GET_CART":
+                        case 'GET_PRODUCT_ID':
                             return {
                                 ...state,
-                                listCart: action.payload
+                                productId: action.payload
                             }
-                            default:
-                                return state
+                            case "GET_CART":
+                                return {
+                                    ...state,
+                                    listCart: action.payload
+                                }
+                                case 'SUCCESS_DELETE_CART':
+                                    return {
+                                        ...state
+                                    }
+                                    default:
+                                        return state
     }
 }

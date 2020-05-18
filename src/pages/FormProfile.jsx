@@ -7,6 +7,7 @@ import {
   doPostProfile,
   changeInputUser,
 } from "../store/actions/userAction";
+import { GetProductByCategory } from "../store/actions/productAction";
 import FormProfil from "../component/FormProfil";
 
 class FormProfile extends Component {
@@ -20,7 +21,12 @@ class FormProfile extends Component {
   render() {
     return (
       <React.Fragment>
-        <Header doSignOut={this.doSignOut} {...this.props} />
+        <Header
+          doSignOut={this.doSignOut}
+          {...this.props}
+          category={this.props.category}
+          GetProductByCategory={this.props.GetProductByCategory}
+        />
         <div className="container">
           <div className="row">
             <div className="col-md-5 my-3">
@@ -54,6 +60,7 @@ const mapStateToProps = (state) => {
     street: state.user.street,
     phone: state.user.state,
     login: state.user.is_login,
+    category: state.product.listCategory,
   };
 };
 
@@ -61,5 +68,6 @@ const mapDispatchToProps = {
   doSignOut,
   doPostProfile,
   changeInput: (e) => changeInputUser(e),
+  GetProductByCategory,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(FormProfile);

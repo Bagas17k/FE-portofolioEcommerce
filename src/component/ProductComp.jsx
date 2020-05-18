@@ -2,13 +2,32 @@ import React from "react";
 import moment from "moment";
 
 const ProductComp = (props) => {
-  const { name, price, color, desc, img, createdAt, category } = props;
+  const {
+    product_type_id,
+    name,
+    price,
+    color,
+    desc,
+    img,
+    createdAt,
+    category,
+    id,
+  } = props;
+  const changeRouterId = async (id) => {
+    if (props.getHandle) {
+      props.getHandle(id);
+    }
+  };
   return (
     <div>
       <div className="container my-5">
         <div className="card mb-3" style={{ maxWidth: "540px;" }}>
           <div className="row no-gutters">
-            <div className="col-md-4">
+            <div
+              className="col-md-4"
+              onClick={() => changeRouterId(id)}
+              value={id}
+            >
               <img src={img} className="card-img" alt="img_product" />
             </div>
             <div className="col-md-8">
@@ -25,6 +44,13 @@ const ProductComp = (props) => {
                     Updated {moment({ createdAt }).fromNow()}
                   </small>
                 </p>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  onClick={() => props.PostCart(id)}
+                >
+                  Add Product
+                </button>
               </div>
             </div>
           </div>

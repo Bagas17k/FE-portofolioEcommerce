@@ -3,7 +3,10 @@ import Header from "../component/header";
 import Footer from "../component/Footer";
 import Carousel from "../component/Carousel";
 import { doSignOut } from "../store/actions/userAction";
-import { getCategory } from "../store/actions/productAction";
+import {
+  getCategory,
+  GetProductByCategory,
+} from "../store/actions/productAction";
 import { connect } from "react-redux";
 import CategoryCard from "../component/CategoryCard";
 
@@ -14,7 +17,12 @@ class Home extends Component {
   render() {
     return (
       <React.Fragment>
-        <Header doSignOut={this.doSignOut} {...this.props} />
+        <Header
+          doSignOut={this.doSignOut}
+          category={this.props.category}
+          GetProductByCategory={this.props.GetProductByCategory}
+          {...this.props}
+        />
         <div className="text-center bg-dark text-white">
           <p>
             <marquee>
@@ -28,7 +36,14 @@ class Home extends Component {
         <div className="container">
           <div className="row d-flex justify-content-center">
             {this.props.category.map((el, index) => {
-              return <CategoryCard category={el.name} />;
+              return (
+                <CategoryCard
+                  category={el.name}
+                  image={el.img_url}
+                  id={el.id}
+                  GetProductByCategory={this.props.GetProductByCategory}
+                />
+              );
             })}
           </div>
         </div>
@@ -65,5 +80,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   doSignOut,
   getCategory,
+  GetProductByCategory,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

@@ -3,7 +3,6 @@ import "../style/header.css";
 import { Link } from "react-router-dom";
 
 const Header = (props, postSignout) => {
-  const status = localStorage.getItem("status");
   const login = localStorage.getItem("is_login");
   postSignout = () => {
     props.doSignOut();
@@ -50,7 +49,7 @@ const Header = (props, postSignout) => {
           </ul>
           <div>
             <div class="dropdown">
-              <a
+              <Link
                 className="btn btn-secondary dropdown-toggle"
                 href="#"
                 role="button"
@@ -60,21 +59,27 @@ const Header = (props, postSignout) => {
                 aria-expanded="false"
               >
                 Categories
-              </a>
+              </Link>
 
               <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a className="dropdown-item" href="#">
-                  Hijab Segi Empat
-                </a>
-                <a className="dropdown-item" href="#">
-                  Pashmina
-                </a>
-                <a className="dropdown-item" href="#">
-                  Ciput
-                </a>
-                <a className="dropdown-item" href="#">
-                  Hijab Instant
-                </a>
+                {props.category.map((el, index) => {
+                  return (
+                    <Link
+                      className="dropdown-item"
+                      to={"/product/category/" + el.id}
+                      onClick={() => props.GetProductByCategory(el.id)}
+                    >
+                      {el.name}
+                    </Link>
+                  );
+                })}
+                <Link
+                  className="dropdown-item"
+                  to="/product"
+                  onClick={() => props.GetProductByCategory("all")}
+                >
+                  See All
+                </Link>
               </div>
             </div>
           </div>
@@ -96,9 +101,14 @@ const Header = (props, postSignout) => {
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" tabindex="-1" aria-disabled="true">
+                <Link
+                  to="/member/cart"
+                  className="nav-link"
+                  tabindex="-1"
+                  aria-disabled="true"
+                >
                   <i className="fas fa-shopping-bag"></i>
-                </a>
+                </Link>
               </li>
             </ul>
           ) : (
@@ -115,9 +125,14 @@ const Header = (props, postSignout) => {
               </li>
 
               <li className="nav-item">
-                <a className="nav-link" tabindex="-1" aria-disabled="true">
+                <Link
+                  to="/member/cart"
+                  className="nav-link"
+                  tabindex="-1"
+                  aria-disabled="true"
+                >
                   <i className="fas fa-shopping-bag"></i>
-                </a>
+                </Link>
               </li>
             </ul>
           )}
