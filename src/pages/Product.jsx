@@ -39,7 +39,7 @@ class Product extends Component {
                   desc={el.description}
                   createdAt={el.createdAt}
                   index={index}
-                  product_type_id={el.product_type_id}
+                  size={el.size}
                   img={el.image_url}
                   category={el.product_type}
                   id={el.id}

@@ -2,16 +2,7 @@ import React from "react";
 import moment from "moment";
 
 const ProductComp = (props) => {
-  const {
-    product_type_id,
-    name,
-    price,
-    color,
-    desc,
-    img,
-    createdAt,
-    id,
-  } = props;
+  const { size, name, price, color, desc, img, createdAt, id } = props;
   const changeRouterId = async (id) => {
     if (props.getHandle) {
       props.getHandle(id);
@@ -37,9 +28,7 @@ const ProductComp = (props) => {
                   Deskripsi: <br /> <span>{desc}</span>
                 </p>
                 <p className="card-text">Warna: {color}</p>
-                <p className="card-text badge badge-primary">
-                  {product_type_id}
-                </p>
+                <p className="card-text badge badge-primary">Size : {size}</p>
                 <p className="card-text">
                   <small className="text-muted">
                     Updated {moment({ createdAt }).fromNow()}
