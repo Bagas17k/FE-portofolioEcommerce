@@ -168,7 +168,6 @@ export const GetProductByCategory = (id) => {
         try {
 
             const response = id === 'all' ? await axios.get(url + '/product') : await axios.get(url + '/product/category/' + id)
-            // const response = await axios.get(url + '/product/category/' + id)
             dispatch({
                 type: 'GET_PRODUCT',
                 payload: response.data

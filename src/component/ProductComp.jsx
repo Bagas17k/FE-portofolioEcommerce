@@ -10,7 +10,6 @@ const ProductComp = (props) => {
     desc,
     img,
     createdAt,
-    category,
     id,
   } = props;
   const changeRouterId = async (id) => {
@@ -38,7 +37,9 @@ const ProductComp = (props) => {
                   Deskripsi: <br /> <span>{desc}</span>
                 </p>
                 <p className="card-text">Warna: {color}</p>
-                <p className="card-text badge badge-primary">{category.name}</p>
+                <p className="card-text badge badge-primary">
+                  {product_type_id}
+                </p>
                 <p className="card-text">
                   <small className="text-muted">
                     Updated {moment({ createdAt }).fromNow()}
