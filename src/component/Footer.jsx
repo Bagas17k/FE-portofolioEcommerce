@@ -3,7 +3,14 @@ import "../style/footer.css";
 import { Link } from "react-router-dom";
 // import { Link } from "react-router-dom";
 
-const Footer = (props) => {
+const Footer = (props, postSignout) => {
+  const login = localStorage.getItem("is_login");
+  postSignout = () => {
+    props.doSignOut();
+    if (!login) {
+      props.history.push("/");
+    }
+  };
   return (
     <div>
       <div className="text-white bg-dark pb-3">
@@ -11,13 +18,21 @@ const Footer = (props) => {
           <div className="col-4 pt-3 d-flex align-items-center">
             <div className="ml-3">
               <h3 className="logo">El-Hijab</h3>
-              <Link to="/signup">
-                <span className="text-white">Register</span>
-              </Link>
-              <br />
-              <Link to="/signin">
-                <span className="text-white">Signin</span>
-              </Link>
+              {login ? (
+                <Link to="/signin" onClick={() => postSignout()}>
+                  <span className="text-white">Signout</span>
+                </Link>
+              ) : (
+                <div>
+                  <Link to="/signup">
+                    <span className="text-white">Register</span>
+                  </Link>
+                  <br />
+                  <Link to="/signin">
+                    <span className="text-white">Signin</span>
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
           <div className="col-4 d-flex justify-content-center pt-3">

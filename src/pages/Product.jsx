@@ -52,7 +52,7 @@ class Product extends Component {
             })}
           </div>
         </div>
-        <Footer />
+        <Footer doSignOut={this.doSignOut} {...this.props} />
       </React.Fragment>
     );
   }

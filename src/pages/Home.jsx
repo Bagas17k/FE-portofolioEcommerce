@@ -25,9 +25,7 @@ class Home extends Component {
         />
         <div className="text-center bg-dark text-white">
           <p>
-            <marquee>
-              Siap melayani pengiriman seluruh wilayah Indonesia
-            </marquee>
+            <p>Siap melayani pengiriman seluruh wilayah Indonesia</p>
           </p>
         </div>
         <div>
@@ -63,7 +61,7 @@ class Home extends Component {
           </p>
         </div>
 
-        <Footer />
+        <Footer doSignOut={this.doSignOut} {...this.props} />
       </React.Fragment>
     );
   }

@@ -44,7 +44,7 @@ class FormProfile extends Component {
             </div>
           </div>
         </div>
-        <Footer />
+        <Footer doSignOut={this.doSignOut} {...this.props} />
       </React.Fragment>
     );
   }

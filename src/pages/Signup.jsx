@@ -5,6 +5,7 @@ import {
   changeInputUser,
   changeUserType,
 } from "../store/actions/userAction";
+import { GetProductByCategory } from "../store/actions/productAction";
 import { connect } from "react-redux";
 import "../style/signup.css";
 import Footer from "../component/Footer";
@@ -20,7 +21,12 @@ class SignUp extends Component {
   render() {
     return (
       <React.Fragment>
-        <Header />
+        <Header
+          doSignOut={this.doSignOut}
+          {...this.props}
+          category={this.props.category}
+          GetProductByCategory={this.props.GetProductByCategory}
+        />
         <div className="bg-signup py-5">
           <div className="d-flex justify-content-center mt-5">
             <div className="card signup-card">
@@ -89,12 +95,14 @@ const mapStateToProps = (state) => {
     kataKunci: state.user.kataKunci,
     status: state.user.state,
     login: state.user.is_login,
+    category: state.product.listCategory,
   };
 };
 
 const mapDispatchToProps = {
   changeInput: (e) => changeInputUser(e),
   doSignUp: doSignUp,
+  GetProductByCategory,
   changeUserType: (e) => changeUserType(e),
 };
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
