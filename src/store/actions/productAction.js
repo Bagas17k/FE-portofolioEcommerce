@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://0.0.0.0:5000'
+const url = 'http://54.169.109.70:5000'
 
 export const getCategory = (props) => {
     return async (dispatch) => {
@@ -54,7 +54,6 @@ export const PostInputProduct = (props) => {
         productForm.append('weight', getState().product.weight);
         productForm.append('size', getState().product.size);
         productForm.append('stock', getState().product.stock);
-        // productForm.append('promo', getState().product.promo);
         productForm.append('discount', getState().product.discount);
         productForm.append('image_url', getState().product.image_url);
         productForm.append('product_type_id', getState().product.product_type_id);
