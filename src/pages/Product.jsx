@@ -13,7 +13,8 @@ import {
 
 class Product extends Component {
   componentDidMount() {
-    // this.props.GetProduct();
+this.props.GetProduct()
+    this.props.GetProductByCategory(this.props.match.params.id);
   }
   handleRequestProductId = async (id) => {
     await this.props.history.replace("/product/" + id);

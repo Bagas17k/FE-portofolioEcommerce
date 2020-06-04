@@ -5,7 +5,7 @@ export const doLogin = () => {
 
         await axios({
                 "method": "GET",
-                "url": "http://54.169.109.70:5000/login",
+                "url": "https://cors-anywhere.herokuapp.com/https://elhijab_be.bagaskj.my.id/login",
                 "params": {
                     username: getState().user.namaPengguna,
                     password: getState().user.kataKunci,
@@ -62,7 +62,7 @@ export const doSignUp = (props) => {
         };
         const myJSON = JSON.stringify(bodyRequest);
         await axios
-            .post("http://54.169.109.70:5000/user", myJSON, {
+            .post("https://cors-anywhere.herokuapp.com/https://elhijab_be.bagaskj.my.id/user", myJSON, {
                 headers: {
                     "Content-Type": "application/json; charset=utf-8",
                     Accept: "application/json; charset=utf-8",
@@ -98,7 +98,7 @@ export const doPostProfile = (props) => {
         const myJSON = JSON.stringify(bodyRequest);
         if (status === 'buyer') {
             await axios
-                .post("http://54.169.109.70:5000/purchaser/profile", myJSON, {
+                .post("https://cors-anywhere.herokuapp.com/https://elhijab_be.bagaskj.my.id/purchaser/profile", myJSON, {
                     headers: {
                         "Content-Type": "application/json; charset=utf-8",
                         Accept: "application/json; charset=utf-8",
@@ -115,7 +115,7 @@ export const doPostProfile = (props) => {
                 });
         } else if (status === 'merchant') {
             await axios
-                .post("http://54.169.109.70:5000/merchant/profile", myJSON, {
+                .post("https://cors-anywhere.herokuapp.com/https://elhijab_be.bagaskj.my.id/merchant/profile", myJSON, {
                     headers: {
                         "Content-Type": "application/json; charset=utf-8",
                         Accept: "application/json; charset=utf-8",
@@ -142,7 +142,7 @@ export const getDataUser = (props) => {
 
         if (status === 'buyer') {
             await axios
-                .get("http://54.169.109.70:5000/purchaser/profile", {
+                .get("https://cors-anywhere.herokuapp.com/https://elhijab_be.bagaskj.my.id/purchaser/profile", {
                     headers: {
                         "Content-Type": "application/json; charset=utf-8",
                         Accept: "application/json; charset=utf-8",
@@ -165,7 +165,7 @@ export const getDataUser = (props) => {
                 });
         } else if (status === 'merchant') {
             await axios
-                .get("http://54.169.109.70:5000/merchant/profile", {
+                .get("https://cors-anywhere.herokuapp.com/https://elhijab_be.bagaskj.my.id/merchant/profile", {
                     headers: {
                         "Content-Type": "application/json; charset=utf-8",
                         Accept: "application/json; charset=utf-8",
