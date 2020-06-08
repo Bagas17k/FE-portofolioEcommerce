@@ -57,8 +57,7 @@ class Home extends Component {
             terjangkau.
             <br /> El-Hijab meyakini bahwa setiap wanita mampu memancarkan
             kecantikannya. Kami siap melayani pelanggan dengan produk-produk
-            spesial yang kami miliki. Pancarkan pesona dan karismamu dengan
-            El-Hijab.
+            spesial yang kami miliki. Pancarkan pesonamu dengan El-Hijab.
           </p>
         </div>
 
