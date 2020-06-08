@@ -61,7 +61,7 @@ export const PostInputProduct = (props) => {
         const token = localStorage.getItem('token');
 
         try {
-            const response = await axios.post(url + '/product', productForm, {
+            await axios.post(url + '/product', productForm, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                     'Authorization': `Bearer ${token}`
