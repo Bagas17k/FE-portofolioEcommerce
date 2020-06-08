@@ -48,7 +48,7 @@ class Home extends Component {
         <div className="container text-center mb-4">
           <hr />
           <h1>
-            <strong>Tentang El-Hijab</strong>
+            <strong>About El-Hijab</strong>
           </h1>
 
           <p>
