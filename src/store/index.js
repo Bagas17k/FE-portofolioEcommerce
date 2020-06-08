@@ -14,6 +14,6 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 store.subscribe(() => {
-    console.warn("cek state store", store.getState());
+    console.warn("cek state stores", store.getState());
 });
 export default store;
