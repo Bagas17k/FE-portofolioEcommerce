@@ -22,6 +22,7 @@ class Home extends Component {
     this.props.getProductId(id);
   };
   render() {
+    console.log("produuuct", this.props.product);
     return (
       <React.Fragment>
         <Header
@@ -39,29 +40,18 @@ class Home extends Component {
           <Carousel />
         </div>
         <div className="container">
-          <div className="row d-flex justify-content-center">
-            {this.props.product.map((el, index) => {
-              return (
-                <div className="col-4 my-3">
-                  <ProductComp
-                    name={el.name}
-                    price={el.price}
-                    color={el.color}
-                    desc={el.description}
-                    createdAt={el.createdAt}
-                    index={index}
-                    size={el.size}
-                    img={el.image_url}
-                    category={el.product_type}
-                    id={el.id}
-                    PostCart={this.props.PostCart}
-                    GetProductByCategory={this.props.GetProductByCategory}
-                    getHandle={(id) => this.handleRequestProductId(id)}
-                    {...this.props}
-                  />
-                </div>
-              );
-            })}
+          <div className="row">
+            {this.props.product.map((el, index) => (
+              <div className="col-4 my-3 d-flex justify-content-center">
+                <ProductComp
+                  el={el}
+                  PostCart={this.props.PostCart}
+                  GetProductByCategory={this.props.GetProductByCategory}
+                  getHandle={(id) => this.handleRequestProductId(id)}
+                  {...this.props}
+                />
+              </div>
+            ))}
           </div>
         </div>
         <div className="container text-center mb-4">

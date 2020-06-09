@@ -33,18 +33,9 @@ class Product extends Component {
           <div className="row">
             {this.props.product.map((el, index) => {
               return (
-                <div className="col-4 my-3">
+                <div className="col-4 my-3 d-flex justify-content-center">
                   <ProductComp
-                    name={el.name}
-                    price={el.price}
-                    color={el.color}
-                    desc={el.description}
-                    createdAt={el.createdAt}
-                    index={index}
-                    size={el.size}
-                    img={el.image_url}
-                    category={el.product_type}
-                    id={el.id}
+                    el={el}
                     PostCart={this.props.PostCart}
                     GetProductByCategory={this.props.GetProductByCategory}
                     getHandle={(id) => this.handleRequestProductId(id)}

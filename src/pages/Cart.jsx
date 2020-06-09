@@ -23,12 +23,11 @@ class Cart extends Component {
     this.props.GetCart();
   }
 
-  
-  deleteThatCart = async(id) => {
-    await this.props.deleteCart(id)
-    await this.props.history.replace("/member/cart")
-    await this.props.GetCart()
-  }
+  deleteThatCart = async (id) => {
+    await this.props.deleteCart(id);
+    await this.props.history.replace("/member/cart");
+    await this.props.GetCart();
+  };
   render() {
     return (
       <React.Fragment>
@@ -50,7 +49,7 @@ class Cart extends Component {
                   price={el.price}
                   qty={el.qty}
                   id={el.id}
-                  deleteAnjingCart={this.deleteThatCart}
+                  deleteThisCart={this.deleteThatCart}
                   {...this.props}
                 />
               );

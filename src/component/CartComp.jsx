@@ -23,7 +23,7 @@ const CartComp = (props) => {
                 <small className="text-muted"></small>
               </p>
               <button
-                onClick={() => props.deleteAnjingCart(id)}
+                onClick={() => props.deleteThisCart(id)}
                 type="button"
                 class="btn btn-danger"
                 value={id}
