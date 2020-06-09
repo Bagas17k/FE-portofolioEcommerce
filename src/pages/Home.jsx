@@ -8,6 +8,7 @@ import {
   GetProductByCategory,
   GetProduct,
   getProductId,
+  PostCart,
 } from "../store/actions/productAction";
 import { connect } from "react-redux";
 import ProductComp from "../component/ProductComp";
@@ -100,5 +101,6 @@ const mapDispatchToProps = {
   GetProductByCategory,
   GetProduct,
   getProductId,
+  PostCart,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
