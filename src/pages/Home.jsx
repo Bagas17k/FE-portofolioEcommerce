@@ -6,14 +6,20 @@ import { doSignOut } from "../store/actions/userAction";
 import {
   getCategory,
   GetProductByCategory,
+  GetProduct,
+  getProductId,
 } from "../store/actions/productAction";
 import { connect } from "react-redux";
-import CategoryCard from "../component/CategoryCard";
-
+import ProductComp from "../component/ProductComp";
 class Home extends Component {
   componentDidMount() {
     this.props.getCategory();
+    this.props.GetProduct();
   }
+  handleRequestProductId = async (id) => {
+    await this.props.history.replace("/product/" + id);
+    this.props.getProductId(id);
+  };
   render() {
     return (
       <React.Fragment>
@@ -33,14 +39,26 @@ class Home extends Component {
         </div>
         <div className="container">
           <div className="row d-flex justify-content-center">
-            {this.props.category.map((el, index) => {
+            {this.props.product.map((el, index) => {
               return (
-                <CategoryCard
-                  category={el.name}
-                  image={el.img_url}
-                  id={el.id}
-                  GetProductByCategory={this.props.GetProductByCategory}
-                />
+                <div className="col-4 my-3">
+                  <ProductComp
+                    name={el.name}
+                    price={el.price}
+                    color={el.color}
+                    desc={el.description}
+                    createdAt={el.createdAt}
+                    index={index}
+                    size={el.size}
+                    img={el.image_url}
+                    category={el.product_type}
+                    id={el.id}
+                    PostCart={this.props.PostCart}
+                    GetProductByCategory={this.props.GetProductByCategory}
+                    getHandle={(id) => this.handleRequestProductId(id)}
+                    {...this.props}
+                  />
+                </div>
               );
             })}
           </div>
@@ -72,6 +90,7 @@ const mapStateToProps = (state) => {
     kataKunci: state.user.kataKunci,
     login: state.user.is_login,
     category: state.product.listCategory,
+    product: state.product.listProduct,
   };
 };
 
@@ -79,5 +98,7 @@ const mapDispatchToProps = {
   doSignOut,
   getCategory,
   GetProductByCategory,
+  GetProduct,
+  getProductId,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

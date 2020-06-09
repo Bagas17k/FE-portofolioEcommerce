@@ -5,15 +5,15 @@ import ProductComp from "../component/ProductComp";
 import { doSignOut } from "../store/actions/userAction";
 import { connect } from "react-redux";
 import {
-  GetProduct,
   PostCart,
   getProductId,
   GetProductByCategory,
+  getCategory,
 } from "../store/actions/productAction";
 
 class Product extends Component {
   componentDidMount() {
-this.props.GetProduct()
+    this.props.getCategory();
     this.props.GetProductByCategory(this.props.match.params.id);
   }
   handleRequestProductId = async (id) => {
@@ -25,30 +25,32 @@ this.props.GetProduct()
       <React.Fragment>
         <Header
           doSignOut={doSignOut}
-          {...this.props}
           category={this.props.category}
           GetProductByCategory={this.props.GetProductByCategory}
+          {...this.props}
         />
         <div className="container">
           <div className="row">
             {this.props.product.map((el, index) => {
               return (
-                <ProductComp
-                  name={el.name}
-                  price={el.price}
-                  color={el.color}
-                  desc={el.description}
-                  createdAt={el.createdAt}
-                  index={index}
-                  size={el.size}
-                  img={el.image_url}
-                  category={el.product_type}
-                  id={el.id}
-                  PostCart={this.props.PostCart}
-                  GetProductByCategory={this.props.GetProductByCategory}
-                  getHandle={(id) => this.handleRequestProductId(id)}
-                  {...this.props}
-                />
+                <div className="col-4 my-3">
+                  <ProductComp
+                    name={el.name}
+                    price={el.price}
+                    color={el.color}
+                    desc={el.description}
+                    createdAt={el.createdAt}
+                    index={index}
+                    size={el.size}
+                    img={el.image_url}
+                    category={el.product_type}
+                    id={el.id}
+                    PostCart={this.props.PostCart}
+                    GetProductByCategory={this.props.GetProductByCategory}
+                    getHandle={(id) => this.handleRequestProductId(id)}
+                    {...this.props}
+                  />
+                </div>
               );
             })}
           </div>
@@ -69,9 +71,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
   doSignOut,
-  GetProduct,
   PostCart,
   getProductId,
   GetProductByCategory,
+  getCategory,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Product);

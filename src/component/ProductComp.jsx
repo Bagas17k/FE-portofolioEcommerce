@@ -3,6 +3,7 @@ import moment from "moment";
 
 const ProductComp = (props) => {
   const { size, name, price, color, desc, img, createdAt, id } = props;
+  const createdUTC = moment.utc(createdAt).format("LLL");
   const changeRouterId = async (id) => {
     if (props.getHandle) {
       props.getHandle(id);
@@ -10,39 +11,40 @@ const ProductComp = (props) => {
   };
   return (
     <div>
-      <div className="container my-5">
-        <div className="card mb-3" style={{ maxWidth: "540px;" }}>
-          <div className="row no-gutters">
-            <div
-              className="col-md-4"
-              onClick={() => changeRouterId(id)}
-              value={id}
+      <div
+        class="card d-flex justify-content-center"
+        style={{ width: "18rem" }}
+      >
+        <div>
+          <img
+            onClick={() => changeRouterId(id)}
+            value={id}
+            src={img}
+            className="card-img"
+            alt="img_product"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{name}</h5>
+            <h5 className="card-text badge badge-danger">{price} IDR</h5>
+            <p className="card-text">Warna: {color}</p>
+            <p className="card-text badge badge-primary">Size : {size}</p>
+            <p className="card-text">
+              Deskripsi: <br /> <span>{desc}</span>
+            </p>
+            <p className="card-text">
+              <small className="text-muted">
+                Updated {moment(createdUTC).fromNow()}
+              </small>
+            </p>
+          </div>
+          <div className="container mb-2">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onClick={() => props.PostCart(id)}
             >
-              <img src={img} className="card-img" alt="img_product" />
-            </div>
-            <div className="col-md-8">
-              <div className="card-body">
-                <h5 className="card-title">{name}</h5>
-                <h5 className="card-text badge badge-danger">{price} IDR</h5>
-                <p className="card-text">
-                  Deskripsi: <br /> <span>{desc}</span>
-                </p>
-                <p className="card-text">Warna: {color}</p>
-                <p className="card-text badge badge-primary">Size : {size}</p>
-                <p className="card-text">
-                  <small className="text-muted">
-                    Updated {moment({ createdAt }).fromNow()}
-                  </small>
-                </p>
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  onClick={() => props.PostCart(id)}
-                >
-                  Add Product
-                </button>
-              </div>
-            </div>
+              Add Product
+            </button>
           </div>
         </div>
       </div>

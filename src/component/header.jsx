@@ -12,7 +12,7 @@ const Header = (props, postSignout) => {
   };
 
   return (
-    <div className="wrapper">
+    <div className="wrapper mb-5">
       <nav className="navbar navbar-expand-lg navbar-light">
         <Link to="/" className="navbar-brand" href="#">
           <h3>El-Hijab</h3>
@@ -73,13 +73,6 @@ const Header = (props, postSignout) => {
                     </Link>
                   );
                 })}
-                <Link
-                  className="dropdown-item"
-                  to="/product"
-                  onClick={() => props.GetProductByCategory("all")}
-                >
-                  See All
-                </Link>
               </div>
             </div>
           </div>

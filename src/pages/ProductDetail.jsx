@@ -8,9 +8,14 @@ import {
   getProductId,
   GetProductByCategory,
   PostCart,
+  getCategory,
 } from "../store/actions/productAction";
 
 class ProductDetail extends Component {
+  componentDidMount = async () => {
+    this.props.getCategory();
+    this.props.getProductId(this.props.match.params.id);
+  };
   render() {
     return (
       <React.Fragment>
@@ -67,5 +72,6 @@ const mapDispatchToProps = {
   getProductId,
   PostCart,
   GetProductByCategory,
+  getCategory,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ProductDetail);

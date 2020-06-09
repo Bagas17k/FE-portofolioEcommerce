@@ -24,15 +24,17 @@ class Profile extends Component {
 
         <div className="profile">
           <div className="container">
-            <div className="row">
-              <div className="col-md-4 pt-3">
-                <Link to="/profile/form">
-                  <button type="button" class="btn btn-secondary">
-                    Add your Profile
-                  </button>
-                </Link>
+            {this.props.dataUser === null ? (
+              <div className="row">
+                <div className="col-md-4 pt-3">
+                  <Link to="/profile/form">
+                    <button type="button" class="btn btn-secondary">
+                      Add your Profile
+                    </button>
+                  </Link>
+                </div>
               </div>
-            </div>
+            ) : null}
             <div className="d-flex justify-content-center py-4">
               <div className="card" style={{ width: "20rem" }}>
                 <img
