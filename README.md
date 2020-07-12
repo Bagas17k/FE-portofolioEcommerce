@@ -9,3 +9,5 @@ Technology Stacks:
 - [Back-End]: RESTful API with Python Flask
 - Database: MySQL
 - Deployment: AWS
+
+link : http://elhijabbe.bagaskj.my.id/
