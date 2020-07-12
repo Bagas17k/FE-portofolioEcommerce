@@ -6,6 +6,6 @@ The idea of this e-commerce is to provide a platform to help hijab seller sell t
 
 Technology Stacks:
 - Front-End : React with Redux, HTML, CS
-- [Back-End](https://github.com/Bagas17k/Portfolio-E-Commerce): RESTful API with Python Flask
+- [Back-End]: RESTful API with Python Flask
 - Database: MySQL
 - Deployment: AWS
